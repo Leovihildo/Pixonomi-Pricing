@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+
+     <!-- Bootstrap Stylesheet-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <!-- Bootstrap Script-->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+     
+     <!--Plugin CSS file with desired skin-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+
+    <!-- STYLESHEET -->
+     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+         
+         
+        :root{
+            /* FONT SIZE */
+            --tiny-fontsize: 1.15rem;
+            --small-fontsize: 1.4rem;
+            --medium-fontsize: 1.9rem;
+            --large-fontsize: 2.8rem;
+            --xl-fontsize: 3.6rem;
+            --header-fontsize: 4.8rem;
+        }
+        body{
+            font-family: "Montserrat", sans-serif;
+        }
+          .hl_page-preview--content .col-4uaWF9izl8, .hl_page-preview--content .row-q19IUmZ9md, .hl_page-preview--content .section-PHIkLNZa2{
+       		padding: 0;
+       }
+      #section-PHIkLNZa2>.inner {
+			margin: 0;
+         width: 100vw !important;
+         max-width: 100% !important;
+       }
+      .navbar{
+            --bs-navbar-padding-y: 2rem;
+        }
+        #navbar-original{
+            z-index: 100000;
+          width: 100%;
+        }
+        .navbar-toggler{
+            font-size: 13px;
+            border: none;
+        }
+        a.navbar-brand{
+            height: 100%;
+            width: 220px;
+            /* margin-left: -50px; */
+            margin-top: -10px;
+        }
+        a.navbar-brand img{
+            height: 100%;
+            width: 100%;
+        }
+        .navbar>.container{
+            gap: 2rem !important;
+        }
+        .navbar-collapse{
+            justify-content: space-around;
+        }
+        .navbar-nav{
+            width: 100%;
+            justify-content: space-around !important;
+        }
+        a.nav-link, a.dropdown-item{
+            font-size: var(--tiny-fontsize) !important;
+          font-family: "Lora", serif !important;
+        }
+        .nav-link:hover{
+            transform: scale(1.1);
+        }
+        .nav-link.active:hover{
+            transform: none;
+        }
+        .nav-link.active{
+            font-weight: 700;
+        }
+       .nav-link.login{
+            	margin-left: 2rem;
+            }
+        .try-for-free{
+            font-size: 1rem !important;
+            border: 2px solid #fff;
+            padding: 0 25px;
+            margin-left: 20px;
+            margin-top: -5px;
+            transition: all 1.5s ease;
+        }
+        .nav-item.try-for-free:hover{
+            background-color: #fff;
+        }
+        .nav-link.try-link:hover{
+            transform: none;
+            color: #000;
+        }
+        /* For the duplicate */
+        /* .navbar-duplicate{
+            position: absolute;
+            top: 0;
+            left: 0;
+        } */
+        #nav_scroll{
+            /* box-shadow: 0 0 17px 0 #000; */
+            transition: all 1s ease-in-out;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
+        /* .hide{
+            margin-top: -100px;
+        }
+        .reveal{
+            margin-top: 0;
+        } */
+        .navbar-duplicate .nav-item .nav-link{
+            color: #7c7c7c;
+        }
+        .navbar-duplicate .nav-link.active{
+            color: #000;
+        }
+        .navbar-duplicate .nav-item.try-for-free{
+            border-color: #000;
+        }
+        .navbar-duplicate .nav-item.try-for-free:hover{
+            background-color: #000;
+        }
+        .navbar-duplicate .nav-link.try-link:hover{
+            color: #fff;
+        }
+        .scroll-up #nav_scroll{
+            filter: drop-shadow(0 -10px 20px #000);
+        }
+        .scroll-down #nav_scroll{
+            transform: translate3d(0, -100%, 0);
+        }
+
+        /* MAIN CONTENT */
+        .pricing-container, .slider-container, .cards-container{
+            padding: 0 40px;
+            margin-top: 50px;
+            margin-bottom: 120px;
+        }
+        .pricing-paragraph{
+            margin: 20px auto;
+            text-align: center;
+        }
+        .pricing-heading{
+            word-wrap: break-word;
+            margin: 20px auto;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .pricing-heading h1>strong{
+            font-size: var(--header-fontsize);
+            font-weight: bold;
+            color: #000;
+        }
+        .pricing-heading h3>strong{
+            font-size: var(--large-fontsize);
+            font-weight: bold;
+            color: #f75d1d;
+        }
+        .pricing-paragraph p{
+            font-size: var(--small-fontsize);
+        }
+        .cards-container>.cards-row div.card{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: inherit;
+            flex-wrap: nowrap;
+            padding: 10px;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0,0,0,.2);
+            min-height: 220px;
+
+        }
+        .cards-container{
+            width: 100% !important;
+            height: 1380px;
+            padding: 40px 10px;
+            background-color: azure;
+            margin-top: -50px;
+        }
+        .cards-row{
+            justify-content: space-around;
+            padding: 0 30px;
+            width: 100%;
+            height: 100%;
+            gap: 2rem;
+        }
+        .card>.title{
+            padding: 5px 0;
+            position: relative;
+            /* height: 100%;
+            width: 100%; */
+            background-color: #000;
+            color: #fff;
+            font-size: var(--small-fontsize);
+            border: 1px solid transparent;
+            border-radius: 10px;
+            line-height: 1.3em;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .card>.price{
+            padding: 5px 0;
+            position: relative;
+            /* height: 100%;
+            width: 100%; */
+            color: #1271A6;
+            line-height: 1.3em;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .card>.title h4{
+            font-size: var(--small-fontsize);
+        }
+        .card>.price h6{
+            font-size: var(--large-fontsize);
+        }
+        .card-btn{
+            color: #f6ad55;
+            padding: 10px 5px;
+            margin: 10px auto;
+            font-size: var(--small-fontsize);
+            font-weight: 700;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0,0,0,.4);
+            width: 80%;
+            background-color: transparent;
+        }
+        .card-btn:hover{
+            transform: scale(1.05);
+        }
+        .card .list{
+            color: #000;
+            font-weight: 400;
+            padding: 0 0 0 30px;
+            opacity: 1;
+            line-height: 1.3em;
+            text-align: left;
+            margin-top: 15px;
+        }
+        .card .list p{
+            font-weight: 500;
+            font-size: var(--medium-fontsize);
+            line-height: 1.2;
+        }
+        .card .list ul{
+            list-style-type: none;
+            padding: 0 0 0 1.5em;
+        }
+        .card .list ul li{
+            list-style-type: "✓" !important;
+            padding-inline-start: 0.5em;
+            padding-left: 1.5em;
+            margin-bottom: 1rem;
+            margin-left: -20px;
+            font-size: var(--tiny-fontsize);
+        }
+        .card-1 .price p{
+            color: #000;
+            font-weight: 700;
+            width: 50%;
+            margin: 10px auto;
+        }
+        .card-1 .price p, .card-2 .price p, .card-3 .price p, .card-4 .price p{
+            font-size: var(--tiny-fontsize);
+        }
+        .card-4 .price p{
+            color: #fff;
+        }
+        .enterprise-plan .title, .powerpixelplus-plan .title, .powerpixel-plan .title{
+            background-color: #f75d1d !important;
+        }
+        .powerpixelplusgrowth-plan.card{
+            background-color: #f75d1d !important;
+        }
+        .powerpixelplusgrowth-plan .title{
+            background-color: #1271A6 !important;
+        }
+        .powerpixelplusgrowth-plan  .card-btn{
+            color: #fff;
+        }
+        .pp-features{
+            margin-top: 80px;
+        }
+        .pp-features h3{
+            font-size: var(--medium-fontsize);
+            color: #f75d1d;
+        }
+        .pp-features ul li{
+            list-style-type: none;
+            font-size: var(--small-fontsize);
+            margin-bottom: 30px;
+        }
+        .pp-features ul li>span{
+            font-weight: 700;
+        }
+        .box{
+            position: relative;
+            padding: 10px 20px 40px 10px;
+            border: 10px solid #1271A6;
+            border-radius: 10px;
+            height: auto;
+            width: 100%;
+            margin-top: 50px;
+        }
+        .box-feature{
+            padding: 5px 20px;
+            background-color: #f75d1d;
+            width: fit-content;
+            color: #fff;
+            font-size: var(--small-fontsize);
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+        .box p, .box h5{
+            text-align: center;
+            font-size: var(--small-fontsize);
+        }
+        .box h5{
+            color: #1271A6;
+            font-weight: 700;
+        }
+        .para{
+            margin-top: 40px;
+            color: #000;
+            font-weight: 500;
+            font-size: var(--small-fontsize);
+            text-align: center;
+        }
+        .bookcall-container{
+            background-color: azure;
+            height: fit-content;
+            padding: 40px 10px;
+            text-align: center;
+            margin-bottom: 120px;
+        }
+        .bookcall-container h3{
+            color: #000;
+            font-size: var(--large-fontsize);
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+        .bookcall-container button{
+            width: fit-content;
+            padding: 10px 40px;
+            background-color: #f75d1d;
+            border: 2px solid #f75d1d;
+            border-radius: 25px;
+            box-shadow: 0 1px 5px rgba(0,0,0,.7);
+        }
+        .bookcall-container button:hover{
+            transform: scale(1.03);
+        }
+        .bookcall-container button a{
+            text-decoration: none;
+            font-size: var(--small-fontsize);
+            color: #fff;
+            font-weight: 500;
+        }
+        .choose{
+            height: 440px;
+            padding: 10px 20px 80px;
+            text-align: center;
+            box-shadow: 0 1px 5px rgba(0,0,0,.2);
+            margin-bottom: 80px;
+        }
+        .choose img{
+            margin: 10px auto;
+            width: 120px;
+            height: auto;
+        }
+        .choose span{
+            color: #f75d1d;
+            font-size: var(--small-fontsize);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .choose p{
+            color: #000;
+            font-size: var(--small-fontsize);
+        }
+        .accordion-button{
+            font-size: var(--small-fontsize);
+        }
+        .accordion-item{
+            background-color: antiquewhite;
+            border: 1px solid #f75d1d;
+            border-radius: 20px;
+            margin-bottom: 25px;
+        }
+        .accordion-button{
+            border: 1px solid #f75d1d;
+            border-radius: 20px;
+        }
+        .accordion-body{
+            background-color: antiquewhite;
+            font-size: var(--tiny-fontsize);
+            border-radius: 20px;
+            padding-bottom: 10px;
+            height: 120px;
+        }
+
+        /* FOOTER  */
+        .footer-container{
+            margin-top: 80px;
+            background-color: #000;
+            padding: 15px 20px;
+        }
+        .footer-container .row{
+            justify-content: space-around !important;
+        }
+        .footer-container p{
+            font-size: var(--tiny-fontsize);
+            font-weight: 500;
+            color: #fff;
+        }
+        .footer-container .first-row img{
+            height: 80px;
+            width: 280px;
+        }
+        .footer-container .second-row{
+            margin-left: -150px;
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+        .footer-container .second-row p{
+            text-align: center;
+        }
+        .footer-container .third-row{
+            margin-top: 20px;
+        } 
+        .footer-container .third-row .login-btn{
+            margin-bottom: 30px;
+            border: 1px solid transparent;
+            color: #fff;
+            font-size: var(--tiny-fontsize);
+            font-weight: 500;
+            padding: 5px 30px;
+            box-shadow: 0 1px 5px rgba(256,256,256,.7);
+        }
+        .login-btn:hover{
+            transform: scale(1.03);
+        }
+          /* For small devices */
+          @media screen and (width <= 1300px){
+            :root{
+            /* FONT SIZE */
+            --tiny-fontsize: 1.15rem;
+            --small-fontsize: 1.2rem;
+            --medium-fontsize: 1.5rem;
+            --large-fontsize: 2.3rem;
+            --xl-fontsize: 3rem;
+            --header-fontsize: 4.2rem;
+        }
+          }
+          @media (480px < width <= 1300px) {
+              #navbar-original.navbar{
+          
+                 width: 100vw !important;
+        }
+                 /* a.nav-link, a.dropdown-item{
+            font-size: tin !important;
+        } */
+             .scroll-up #nav_scroll{
+            filter: none;
+            box-shadow: 0 -10px 20px #000;
+        }
+            a.navbar-brand{
+            width: 190px;
+        }
+             .nav-link:hover{
+            transform: none;
+        }
+        .navbar>.container{
+            gap: 1rem !important;
+        }
+             div.offcanvas-body{
+       		margin-left: 0;
+       }
+        /* .try-for-free{
+            font-size: 1rem;
+            border: 2px solid #fff;
+            padding: 0 5px;
+            margin-left: 0;
+            margin-top: 10px;
+        } */
+        /* .nav-link.login{
+            margin-top: 30px !important;
+            border-top: 1px solid #7c7c7c;
+        } */
+        }
+        /* For Tablets and mobile devices */
+        @media screen and (width <= 1103px){
+            .cards-container{
+                height: auto;
+            }
+            .cards-container>.cards-row{
+                display: block;
+            }
+            .cards-container>.cards-row div.card{
+                height: 920px !important;
+                margin-bottom: 15px;
+            }
+            /* .row{
+                display: block !important;
+            }
+            .col{
+                width: 100% !important;
+            } */
+        } 
+        @media screen and (width <= 992px){
+            .cards-container{
+                height: auto;
+            }
+            .cards-container>.cards-row div.card{
+                height: 720px !important;
+                margin-bottom: 15px;
+            }
+            .row{
+                display: block !important;
+            }
+            .col{
+                width: 100% !important;
+            }
+            .footer-container .second-row{
+                margin-left: 0px !important;
+            }
+            .footer-container .first-row{
+                text-align: center;
+            }
+            .footer-container .third-row{
+                text-align: center;
+            }
+        } 
+             /* For small devices */
+       @media (480px < width <= 640px) {
+       		    a.navbar-brand{
+            height: 100%;
+            width: 180px;
+            margin-left: 0;
+            margin-top: 0;
+        }
+               #navbar-original.navbar{
+           	 margin-left: -10px;
+        }
+       }
+
+        /* For smaller devices */
+        @media (width <= 480px) {
+            :root{
+            /* FONT SIZE */
+            --tiny-fontsize: 1rem;
+            --small-fontsize: 1.08rem;
+            --medium-fontsize: 1.2rem;
+            --large-fontsize: 2rem;
+            --xl-fontsize: 2.4rem;
+            --header-fontsize: 3rem;
+        }
+               #navbar-original.navbar{
+           	 /* margin-left: -10px; */
+                 width: 100vw;
+        }
+               a.nav-link, a.dropdown-item{
+            font-size: 1.15rem !important;
+        }
+          .nav-link.login{
+            	margin-left: 0;
+            }
+          .scroll-up #nav_scroll{
+            filter: none;
+            box-shadow: 0 -10px 20px #000;
+        }
+            a.navbar-brand{
+            height: 100%;
+            width: 180px;
+            margin-left: 0;
+            margin-top: 0;
+        }
+           .nav-link:hover{
+            transform: none;
+        }
+        .try-for-free{
+            font-size: 1rem;
+            border: 2px solid #fff;
+            padding: 0 5px;
+            margin-left: 0;
+            margin-top: 10px;
+        }
+        .nav-link.login{
+            margin-top: 30px !important;
+            border-top: 1px solid #7c7c7c;
+        }
+                div.offcanvas-body{
+       		margin-left: 0;
+       }
+       .cards-container>.cards-row div.card{
+                height: 802px !important;
+                margin-bottom: 15px;
+            }
+        }
+     </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="nav_scroll" class="navbar navbar-expand-xl hide navbar-duplicate" style="background-color: #FAF9F6;" data-bs-theme="light">
+        <div class="container">
+          <a class="navbar-brand" href="https://pixonomi.com/home">
+            <img src="https://storage.googleapis.com/msgsndr/5j2MPEwpyHAxvamQdcv6/media/654d65f67b3caa0d19935d8a.png" alt="Pixonomi">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+            <div class="offcanvas-header">
+              <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Pixonomi</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/home">PowerPixel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/intentionx">IntentionX</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/b2b-wizard">B2B Wizard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="https://pixonomi.com/pricing">Pricing</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://pixonomi.com/compliance">Compliance</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/compare-pixonomi">Compare Pixonomi</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/partners-and-affiliates">Partners & Affiliates</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/contact-us">Contact Us</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/pricing">FAQ</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="https://pixonomi.com/pricing" class="nav-link login"><strong>Login</strong></a>
+            </li>
+            <li class="nav-item try-for-free">
+                <a href="https://pixonomi.com/pricing" class="nav-link try-link">Try for Free</a>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+       <!-- Navbar Duplicate-->
+    <nav id="navbar-original" class="navbar navbar-expand-xl" style="background-color: #000;" data-bs-theme="dark">
+        <div class="container">
+          <a class="navbar-brand" href="https://pixonomi.com/home">
+            <img src="https://storage.googleapis.com/msgsndr/5j2MPEwpyHAxvamQdcv6/media/659036b1888153660e4680b8.png" alt="Pixonomi">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h3 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Pixonomi</h3>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+          <div class="offcanvas-body">
+                    <ul class="navbar-nav flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/home">PowerPixel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/intentionx">IntentionX</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/b2b-wizard">B2B Wizard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  href="https://pixonomi.com/pricing">Pricing</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://pixonomi.com/compliance">Compliance</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/compare-pixonomi">Compare Pixonomi</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/partners-and-affiliates">Partners & Affiliates</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/contact-us">Contact Us</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/pricing">FAQ</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="https://pixonomi.com/pricing" class="nav-link login"><strong>Login</strong></a>
+            </li>
+            <li class="nav-item try-for-free">
+                <a href="https://pixonomi.com/pricing" class="nav-link try-link">Try for Free</a>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End of Navbar Duplicate -->
+
+
+      <!-- main content -->
+    <div class="container pricing-container">
+        <div class="pricing-heading">
+            <h1><strong>Flexible Pricing!</strong></h1>
+        </div>
+
+        <div class="pricing-paragraph">
+            <p>Choose the number of credits you want! Simple as that! Credits automatically refill when they're depleted. You can cancel at anytime. No long contracts, no monthly payments. Always fair and easy.</p>
+        </div>
+    </div>
+
+    <!-- SLIDER -->
+    <div class="container slider-container">
+        <p>1 Credit = 1 Identified Website Visitor</p>
+        <input onmousedown="return false" type="text" class="js-range-slider" name="my_range" value="" id="demo_3" />
+         
+    </div>
+
+   <!-- CARDS -->
+    <div class="cards cards-container">
+        <div class="row cards-row">
+            <div class="card-1 basic-plan card col">
+                <div class="title"><h4>Basic Plan</h4></div>
+                <div class="price"><h6><strong>FREE</strong></h6><p>(No Credit Card Required)</p></div>
+                <button class="basic-plan-btn card-btn">GET STARTED</button>
+                <div class="list">
+                    <p>Includes:</p>
+                    <ul>
+                        <li>PowerPixel - Website Visitor Identification (25 credits included)</li>
+                        <li>Real-time Identification</li>
+                        <li>Seamless Integration</li>
+                        <li>Ticket Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-2 powerpixel-plan card col">
+                <div class="title"><h4>PowerPixel Plan</h4></div>
+                <div class="price"><p>STARTING AT</p><h6><strong>Select Website Visitors</strong></h6></div>
+                <button class="powerpixel-plan-btn card-btn">GET STARTED</button>
+                <div class="list">
+                    <p>Includes:</p>
+                    <ul>
+                        <li>PowerPixel - Website Visitor Identification</li>
+                        <li>Seamless Integration</li>
+                        <li>Priority Email and Ticketing Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-3 powerpixelplus-plan card col">
+                <div class="title"><h4>PowerPixel+ Plan</h4></div>
+                <div class="price"><p>STARTING AT</p><h6><strong>Select Website Visitors</strong></h6></div>
+                <button class="powerpixelplus-plan-btn card-btn">GET STARTED</button>
+                <div class="list">
+                    <p>Includes:</p>
+                    <ul>
+                        <li>PowerPixel - Website Visitor Identification</li>
+                        <li>Seamless Integration</li>
+                        <li>Priority Email and Ticketing Support</li>
+                        <li>Live Chat/Technical Support</li>
+                        <li>Retargeting Strategy Session</li>
+                        <li>Retargeting</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-4 powerpixelplusgrowth-plan card col">
+                <div class="title"><h4>PowerPixel+ Growth Plan</h4></div>
+                <div class="price"><p>STARTING AT</p><h6><strong>Select Website Visitors</strong></h6></div>
+                <button class="powerpixelplusgrowth-plan-btn card-btn">GET STARTED</button>
+                <div class="list">
+                    <p>Includes:</p>
+                    <ul>
+                        <li>PowerPixel - Website Visitor Identification</li>
+                        <li>Seamless Integration</li>
+                        <li>IntentionX (50% off)</li>
+                        <li>B2B Wizard (50% off)</li>
+                        <li>Data Enrichment (50% off)</li>
+                        <li>Priority Onboarding Call</li>
+                        <li>Live Chat/Technical Support</li>
+                        <li>Retargeting Strategy Session</li>
+                        <li>Retargeting</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-4 enterprise-plan card col">
+                <div class="title"><h4>Enterprise Plan</h4></div>
+                <div class="price"><h6><strong>BOOK A DEMO</strong></h6></div>
+                <button class="enterprise-plan-btn card-btn">GET STARTED</button>
+                <div class="list">
+                    <p>Includes:</p>
+                    <ul>
+                        <li>Custom Plan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  -->
+    <div class="container pricing-container">
+        <div class="pricing-heading">
+            <h1><strong>PowerPixel Pricing!</strong></h1>
+            <h3><strong>How it works</strong></h3>
+        </div>
+
+        <div class="pricing-paragraph">
+            <p>At Pixonomi, we believe in keeping things straightforward and customer-friendly. Our pricing model is designed with your ease in mind, ensuring you get the most value without any unnecessary complications.</p>
+        </div>
+
+        <div class="how-it-works pp-features">
+            <h3>🚀 How It Works: Credits in Action</h3>
+            <ul>
+                <li>• 💳 <span>Purchase Credits:</span> After making a payment, you'll receive a block of credits sent directly to your client dashboard. It's like stocking up on tokens for your favorite arcade games.</li>
+                <li>• 👤 <span>1 Credit = 1 Identified Visitor:</span> Each credit is your golden token to identifying one website visitor. When a new identified visitor lands in your dashboard, you lose 1 credit. It's that simple – no complicated math.</li>
+                <li>• 🔄 <span>Automatic Replenishment:</span> When your credits run low, we've got your back. Your credits will automatically replenish, and you'll be charged your chosen price for a fresh block of credits. It's like magic, but better!</li>
+            </ul>
+        </div>
+
+        <div class="why-pixonomi pp-features">
+            <h3>🎉 Why Pixonomi's #1:</h3>
+            <ul>
+                <li>• ✨ <span>No Long Contracts:</span> We hate long-term commitments as much as you do. With Pixonomi, you're never forced into lengthy contracts. Stay as long as you love our service – no strings attached.</li>
+                <li>• 📅 <span>Pay Only When You Need:</span> Forget monthly charges for leads you haven't received. Pixonomi charges you only when you replenish your credits, regardless of how much time passes. It's your pace, your terms!</li>
+                <li>• 🌐 <span>Identify Visitors in Real-time:</span> PowerPixel identifies website visitors as soon as they land on your page, then immediately sends that information into your client dashboard or CRM, in “Real-time.”</li>
+            </ul>
+        </div>
+    </div>
+
+    <!--  -->
+    <div class="container pricing-container">
+        <div class="pricing-heading">
+            <h1><strong>Supercharge Your Digital Insights!</strong></h1>
+        </div>
+
+        <div class="pricing-paragraph">
+            <p>With Pixonomi's Premium Products</p>
+        </div>
+
+        <div class="b2b-wiard box">
+            <div class="box-feature">B2B Wizard</div>
+            <h5>Industry-Specific Targeting</h5>
+            <p>Search by Industry, SIC codes or NAICS codes to access business lists and the targeted leads of millions of executives across thousands of Industries</p>
+        </div>
+        <div class="intentionx box">
+            <div class="box-feature">IntentionX</div>
+            <h5>Who’s Interested in Your Business or Service?</h5>
+            <p>Access our list of thousands of brands, interest, products, and services, and find out exactly who is currently searching for it online.</p>
+        </div>
+        <div class="para"><p>Premium products are only available to PowerPixel clients.<br>
+            To access these premium products, please purchase any paid Plan above.</p></div>
+    </div>
+
+    <!--  -->
+    <div class="bookcall-container">
+        <h3>Have More Questions About Our Plans Or Products?</h3>
+        <button class="bookcall-btn"><a href="">Book A Call</a></button>
+    </div>
+
+    <!--  -->
+    <div class="cards container cards-2">
+        <div class="pricing-heading">
+            <h1><strong>Why Choose Us?</strong></h1>
+        </div>
+        <div class="row cards-row">
+            <div class="card col choose">
+                <img src="https://assets.cdn.filesafe.space/5j2MPEwpyHAxvamQdcv6/media/656068e1c2b9616202b3813c.png" alt="">
+                <span>Transparent Usage:</span>
+                <p>Access your leads and monitor your credit usage in real-time through your client dashboard</p>
+            </div>
+            <div class="card col choose">
+                <img src="https://assets.cdn.filesafe.space/5j2MPEwpyHAxvamQdcv6/media/656068e11ffea759c7ad7baf.png" alt="">
+                <span>No Interruptions:</span>
+                <p>With automatic recharges, your lead acquisition continues smoothly.</p>
+            </div>
+            <div class="card col choose">
+                <img src="https://assets.cdn.filesafe.space/5j2MPEwpyHAxvamQdcv6/media/656068e1c2b961a9e2b3813d.png" alt="">
+                <span>Flexible Options:</span>
+                <p>We service businesses of all sizes. Whether you’re a startup or seeking growth, we have a plan for you!</p>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+    <div class="container faq-container">
+        <div class="pricing-heading">
+            <h1><strong>FAQ</strong></h1>
+        </div>
+        <div class="accordion accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="-collapseOne">
+                    What if I run out of credits before the month is over?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">Your credits will automatically be replenished when you reach the 25-credit mark, ensuring a continuous flow of leads.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="-collapseTwo">
+                    Can I change my credit block size?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">Absolutely! Contact our support team to adjust your credit block according to your evolving needs.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="-collapseThree">
+                    Are there any long-term contracts?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">No, our system is pay-as-you-go. You can adjust your credit blocks or cancel at any time</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="-collapseThree">
+                    What if I want to order an IntentionX audience or B2B industry list independently?
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">IntentionX and B2B Wizard products are only available to Pixonomi clients to assist our clients in their digital marketing efforts. To order one of these products, please purchase one of our paid Plans above</div>
+                </div>
+              </div>
+          </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-container">
+        <div class="row">
+            <div class="first-row col">
+                <img src="https://assets.cdn.filesafe.space/5j2MPEwpyHAxvamQdcv6/media/655b19340226f0af7e071f1e.png" alt="Pixonomi">>
+                <p>Get More <span style="color: #1271A6;">Data</span></p>
+                <p>Create Better <span style="color: #1271A6;">Audiences</span></p>
+                <p>See More <span style="color: #f75d1d;">Profit</span></p>
+            </div>
+            <div class="second-row col">
+                <p>&copy; 2023 Pixonomi</p>
+                <p>Our Privacy Policy | Terms & Conditions</p>
+            </div>
+            <div class="third-row col">
+                <button class="btn login-btn login">Login</button>
+                <p>Address: 17350 State Hwy 249, Suite 220 Houston, TX 77064</p>
+                <p>Email: <a href="info@pixonomi.com">info@pixonomi.com</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- SCRIPT FILES -->
+   
+    <!--jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!--Plugin JavaScript file-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script> 
+    <script>
+        const body = document.body;
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', ()=>{
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll <= 0){
+                body.classList.remove("scroll-up");
+            }
+            if(currentScroll > lastScroll && !body.classList.contains("scroll-down")){
+                body.classList.remove("scroll-up");
+                body.classList.add("scroll-down");
+            }
+            if(currentScroll < lastScroll && body.classList.contains("scroll-down")){
+                body.classList.remove("scroll-down");
+                body.classList.add("scroll-up");
+            }
+
+            lastScroll = currentScroll;
+        })
+
+       
+        var credit = document.getElementById("creditScore");
+     var creditToggle = document.getElementsByTagName("input");
+     var toggleSwitch = document.querySelector(".toggle");
+        var basicPlan = document.querySelectorAll(".basic-plan .price h6");
+       var pricePlan = document.querySelectorAll(".powerpixel-plan .price h6");
+      //   pricePlan.forEach(price=>{
+       //  	price.innerHTML = "SOmething";
+      //   })
+       var pricePlan2 = document.querySelectorAll(".powerpixelplus-plan .price h6");
+       var pricePlan3 = document.querySelectorAll(".powerpixelplusgrowth-plan .price h6");
+
+      console.log(pricePlan);
+       
+     
+     const pricing = [
+         {
+            // b2c_credit: "0",
+            // b2b_credit: "0",
+            // BasicPlan: "FREE",
+             PowerPixel: "$0.00",
+             PowerPixel_plus: "$0.00",
+             PowerPixel_plusGrowth: "$0.00" 
+         },
+         {
+           //  b2c_credit: "300",
+            // b2b_credit: "200",
+            // BasicPlan: "FREE",
+             PowerPixel: "$90.00",
+             PowerPixel_plus: "$120.00",
+             PowerPixel_plusGrowth: "$870.00" 
+            },
+            {
+            // b2c_credit: "450",
+            // b2b_credit: "300",
+            // BasicPlan: "FREE",
+             PowerPixel: "$200.00",
+             PowerPixel_plus: "$275.00",
+             PowerPixel_plusGrowth: "$1,025.00" 
+            },
+            {
+            // b2c_credit: "900",
+            // b2b_credit: "600",
+          //   BasicPlan: "FREE",
+             PowerPixel: "$370.00",
+             PowerPixel_plus: "$520.00",
+             PowerPixel_plusGrowth: "$1,270.00" 
+            },
+            {
+           //  b2c_credit: "1350",
+           //  b2b_credit: "900",
+           //  BasicPlan: "FREE",
+             PowerPixel: "$700.00",
+             PowerPixel_plus: "$1,000.00",
+             PowerPixel_plusGrowth: "$1,750.00 "
+            },
+            {
+            // b2c_credit: "1800",
+           //  b2b_credit: "1200",
+           //  BasicPlan: "FREE",
+             PowerPixel: "$1,000",
+             PowerPixel_plus: "$1,470.00",
+             PowerPixel_plusGrowth: "$2,220.00" 
+            },
+            {
+           //  b2c_credit: "2250",
+           //  b2b_credit: "1500",
+           //  BasicPlan: "FREE",
+             PowerPixel: "$1,550.00",
+             PowerPixel_plus: "$2,250.00",
+             PowerPixel_plusGrowth: "$3,000.00" 
+            },
+            {
+           //  b2c_credit: "2700",
+           //  b2b_credit: "1800",
+          //   BasicPlan: "FREE",
+             PowerPixel: "$2,850.00",
+             PowerPixel_plus: "$4,000.00",
+             PowerPixel_plusGrowth: "$4,750.00" 
+            },
+            {
+           //  b2c_credit: "0",
+           //  b2b_credit: "0",
+             BasicPlan: "Book A Demo",
+             PowerPixel: "Book A Demo",
+             PowerPixel_plus: "Book A Demo",
+             PowerPixel_plusGrowth: "Book A Demo" 
+            },
+     ];
+     
+     let SliderValues = [
+         "0", "200", "500", "1000", "2000", "3000", "5000", "10,000", "10,001+"
+      ];
+     
+     $(".js-range-slider").ionRangeSlider({
+         skin: "round",
+         grid: true,
+           postfix: " Credits",
+         min: 0,
+         max: 12,
+         // from: 200,
+         to: 500,
+         values: SliderValues,
+        // onUpdate: function (data) {
+             // Add onUpdate callback to update credit score dynamically while dragging
+          //   getValue(data);
+        // },
+             onChange: function (data){
+                 getValue(data);
+             }
+     });
+     
+     var type = null;
+     var points = null;
+     var plan = null;
+     var price = null;
+     var selectedFrom = 0; // Initialize the variable outside the getValue function
+     var toggleSwitchInput = document.querySelector(".switch-toggle input");
+     
+ 
+     const getValue = (data) => {
+         selectedFrom = data.from;
+ 
+           plan = "";
+           price = "$0.00";
+           points = SliderValues[selectedFrom];
+
+           console.log(points);
+             
+           //for (var plan in pricePlan){
+       
+            basicPlan.forEach(plan =>{
+              if ( selectedFrom == 8){
+              	       plan.innerHTML = '<strong>'+pricing[selectedFrom].BasicPlan+'</strong>';
+               //console.log(plan1.innerHTML);
+              }
+              else{
+              		plan.innerHTML = '<strong>FREE</strong>';
+              }
+             });
+              
+
+             pricePlan.forEach(plan1 =>{
+                 plan1.innerHTML = '<strong>'+pricing[selectedFrom].PowerPixel+'</strong>';
+               //console.log(plan1.innerHTML);
+             });
+        
+             pricePlan2.forEach(plan2 =>{
+                   plan2.innerHTML = '<strong>'+pricing[selectedFrom].PowerPixel_plus+'</strong>';
+               })
+       
+               pricePlan3.forEach(plan3 =>{
+                   plan3.innerHTML = '<strong>'+pricing[selectedFrom].PowerPixel_plusGrowth+'</strong>';	
+               })
+               
+                // Show credit score for b2c if toggle is checked
+             if (toggleSwitchInput.checked){
+                 credit.innerHTML = pricing[selectedFrom].b2c_credit;
+             }
+             else{
+                 credit.innerHTML = pricing[selectedFrom].b2b_credit;
+             }
+         }
+       
+     //   if (selectedFrom == 0){
+     //           pricePlan.innerHTML = 'Select website visitors above';
+     //           pricePlan2.innerHTML = 'Select website visitors above';
+     //          pricePlan3.innerHTML = 'Select website visitors above';
+     //   }
+ 
+             // Toggle credit score of b2b and b2c
+             toggleSwitchInput.addEventListener('change', (e)=>{
+                 if (e.target.checked){
+                     credit.innerHTML = pricing[selectedFrom].b2c_credit;
+                 }
+                 else{
+                     credit.innerHTML = pricing[selectedFrom].b2b_credit;
+                 }
+             })
+    </script>
+</body>
+</html>
